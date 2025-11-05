@@ -7,6 +7,7 @@ class SplashView extends StatelessWidget {
   static const routeName = '/splash_view';
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(

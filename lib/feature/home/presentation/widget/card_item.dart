@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hungry_app/core/constants/app_colors.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({super.key, required this.title, required this.desc, required this.image, required this.rate});
+  const CardItem({
+    super.key,
+    required this.title,
+    required this.desc,
+    required this.image,
+    required this.rate,
+  });
   final String title, desc, image, rate;
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        height: 225,
+      child: SizedBox(
+        height: 215,
         width: 185,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -39,6 +46,8 @@ class CardItem extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                      Spacer(),
+                      Icon(Icons.favorite, color: AppColors.primaryColor),
                     ],
                   ),
                 ],

@@ -15,6 +15,7 @@ class HeaderHomeView extends StatelessWidget {
       children: [
         SvgPicture.asset(
           Assets.svgTextSplashImage,
+          // ignore: deprecated_member_use
           color: AppColors.primaryColor,
         ),
         Spacer(),
