@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/core/constants/app_image.dart';
 import 'package:hungry_app/core/widgets/custom_button.dart';
 import 'package:hungry_app/core/widgets/custom_text_filed.dart';
@@ -33,7 +34,12 @@ class RegisterViewBody extends StatelessWidget {
               controller: passwordController,
             ),
             SizedBox(height: 20),
-            CustomButton(text: 'Register'),
+            CustomButton(
+              text: 'Register',
+              backGroundColor: Colors.white,
+              color: AppColors.primaryColor,
+              width: double.infinity,
+            ),
             SizedBox(height: 20),
             DoYouHaveAnAccount(),
           ],

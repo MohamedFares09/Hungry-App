@@ -1,28 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/core/constants/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onTap , required this.text});
+  const CustomButton({
+    super.key,
+    this.onTap,
+    required this.text,
+    this.width,
+    required this.color,
+    required this.backGroundColor,
+    this.padding = const EdgeInsets.all(8),
+  });
   final void Function()? onTap;
-  final String text; 
+  final String text;
+  final double? width;
+  final Color color;
+  final Color backGroundColor;
+  final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: double.infinity,
+        width: width,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
+          color: backGroundColor,
         ),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: AppColors.primaryColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: padding,
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: color,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
