@@ -1,19 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:hungry_app/core/constants/app_styles.dart';
 import 'package:hungry_app/feature/home/presentation/widget/header_home_view.dart';
 import 'package:hungry_app/feature/home/presentation/widget/search_text_filed.dart';
 
 class SliverAppBarHomeView extends StatelessWidget {
-  const SliverAppBarHomeView({
-    super.key,
-  });
+  const SliverAppBarHomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Colors.white,
-      toolbarHeight: 210,
+      toolbarHeight: 220,
       scrolledUnderElevation: 0,
       floating: false,
       pinned: true,
@@ -30,7 +27,6 @@ class SliverAppBarHomeView extends StatelessWidget {
             ),
             const SizedBox(height: 18),
             const SearchTextFiled(),
-            const SizedBox(height: 20),
           ],
         ),
       ),

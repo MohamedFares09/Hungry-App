@@ -14,6 +14,7 @@ class HomeViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Column(
             children: [
+              SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: const CategoryList(),
@@ -41,7 +42,6 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
         ),
-       
       ],
     );
   }
