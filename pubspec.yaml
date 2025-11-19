@@ -29,10 +29,11 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
-  
+
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.1
+#  intl: ^0.20.2
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -80,3 +81,4 @@ flutter_assets:
   output_path: lib/core/constants/
   filename: app_image.dart
   field_prefix: null
+

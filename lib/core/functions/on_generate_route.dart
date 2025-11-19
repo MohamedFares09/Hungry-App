@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hungry_app/feature/auth/login/presentation/login_view.dart';
 import 'package:hungry_app/feature/auth/register/presentation/registe_view.dart';
+import 'package:hungry_app/feature/check_out/presentation/view/checkout_view.dart';
 import 'package:hungry_app/feature/home/presentation/home_view.dart';
 import 'package:hungry_app/feature/product/presentation/product_datails_view.dart';
 import 'package:hungry_app/feature/splash/presentation/splash_view.dart';
@@ -22,6 +23,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const ProductDatailsView(),
       );
+    case CheckoutView.routeName:
+    return MaterialPageRoute(builder: (context) => const CheckoutView());
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(
