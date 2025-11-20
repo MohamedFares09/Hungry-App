@@ -10,13 +10,18 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: Icon(Icons.arrow_back),
-        backgroundColor: Colors.transparent,
-      ),
       body: CartViewBody(),
-      bottomSheet: SizedBox(
+      bottomSheet: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 20, offset: Offset(0, 0)),
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
         height: 100,
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, bottom: 10),

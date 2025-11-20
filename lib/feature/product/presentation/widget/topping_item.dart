@@ -28,7 +28,7 @@ class ToppingItem extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              child: Image.asset(image, height: 100, fit: BoxFit.cover),
+              child: Image.asset(image, height: 80, fit: BoxFit.cover),
             ),
 
             // الجزء السفلي البني

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/feature/auth/login/presentation/widget/login_view_body.dart';
 
 class LoginView extends StatelessWidget {

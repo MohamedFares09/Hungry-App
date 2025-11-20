@@ -48,37 +48,39 @@ class LoginViewBody extends StatelessWidget {
 
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 100),
-                    CustomTextFiled(
-                      hintText: 'Email',
-                      controller: emailController,
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextFiled(
-                      obscureText: true,
-                      hintText: 'Password',
-                      controller: passwordController,
-                    ),
-                    const SizedBox(height: 16),
-                    CustomButton(
-                      text: "Login",
-                      backGroundColor: Colors.white,
-                      color: AppColors.primaryColor,
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            Root.routeName,
-                          );
-                        }
-                      },
-                      width: double.infinity,
-                    ),
-                    const SizedBox(height: 30),
-                    const DoNoHaveAnAccount(),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 100),
+                      CustomTextFiled(
+                        hintText: 'Email',
+                        controller: emailController,
+                      ),
+                      const SizedBox(height: 20),
+                      CustomTextFiled(
+                        obscureText: true,
+                        hintText: 'Password',
+                        controller: passwordController,
+                      ),
+                      const SizedBox(height: 16),
+                      CustomButton(
+                        text: "Login",
+                        backGroundColor: Colors.white,
+                        color: AppColors.primaryColor,
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              Root.routeName,
+                            );
+                          }
+                        },
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 30),
+                      const DoNoHaveAnAccount(),
+                    ],
+                  ),
                 ),
               ),
             ),

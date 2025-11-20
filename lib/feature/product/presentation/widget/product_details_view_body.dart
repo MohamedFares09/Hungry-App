@@ -62,7 +62,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: 50),
-          PriceSection( price: 18.19,),
+         
           SizedBox(height: 30),
         ],
       ),
