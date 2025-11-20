@@ -55,7 +55,7 @@ class CardItem extends StatelessWidget {
                           ),
                         ),
                         Spacer(),
-                        Icon(Icons.favorite, color: AppColors.primaryColor),
+                        Icon(Icons.favorite_border),
                       ],
                     ),
                   ],

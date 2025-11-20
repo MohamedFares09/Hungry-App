@@ -13,7 +13,7 @@ class SelectPayment extends StatelessWidget {
     this.tileColor,
     this.titleStyle,
     this.onTap,
-    this.groupValue
+    this.groupValue,
   });
   final String title;
   final Widget? subTitle;
@@ -23,13 +23,13 @@ class SelectPayment extends StatelessWidget {
   final Color? tileColor;
   final Function(String?)? onChanged;
   final TextStyle? titleStyle;
-  final Function()? onTap ;
-  final String ? groupValue;
+  final Function()? onTap;
+  final String? groupValue;
   @override
   Widget build(BuildContext context) {
     return ListTile(
       
-      onTap:onTap ,
+      onTap: onTap,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       tileColor: tileColor ?? Color(0xff3C2F2F),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hungry_app/feature/product/presentation/widget/details_product_and_spacy_slider.dart';
-import 'package:hungry_app/feature/product/presentation/widget/price_section.dart';
 import 'package:hungry_app/feature/product/presentation/widget/topping_item.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {

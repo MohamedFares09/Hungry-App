@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 
@@ -7,11 +9,16 @@ class CustomTextFiled extends StatefulWidget {
     required this.hintText,
     required this.controller,
     this.obscureText = false,
+    this.fillColor,
+    this.labe,
+    this.hintTextColor,
   });
   final String hintText;
   final TextEditingController controller;
   final bool obscureText;
-
+  final Color? fillColor;
+  final Widget? labe;
+  final TextStyle? hintTextColor;
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
@@ -37,10 +44,11 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       controller: widget.controller,
       obscureText: _obscureText,
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: widget.fillColor ?? Colors.white,
         filled: true,
+        label: widget.labe,
         hintText: widget.hintText,
-        hintStyle: TextStyle(color: Colors.black),
+        hintStyle:widget.hintTextColor?? TextStyle(color: Colors.black),
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
