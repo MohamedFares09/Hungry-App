@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/feature/auth/register/presentation/registe_view.dart';
+import 'package:hungry_app/feature/auth/register/presentation/register_view.dart';
 
 class DoNoHaveAnAccount extends StatelessWidget {
   const DoNoHaveAnAccount({super.key});
@@ -14,7 +14,7 @@ class DoNoHaveAnAccount extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacementNamed(context, RegisteView.routeName);
+            Navigator.pushReplacementNamed(context, RegisterView.routeName);
           },
           child: Text(
             "Register",

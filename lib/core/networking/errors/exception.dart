@@ -47,7 +47,13 @@ void handelDioException(DioException e) {
           );
         default:
           throw ServerException(
-            errorModel: ErrorModel.fromJson(e.response!.data),
+            errorModel: e.response?.data is Map<String, dynamic>
+                ? ErrorModel.fromJson(e.response!.data)
+                : ErrorModel.fromJson({
+                    'message':
+                        e.response?.data.toString() ??
+                        'An unknown error occurred',
+                  }),
           );
       }
   }
