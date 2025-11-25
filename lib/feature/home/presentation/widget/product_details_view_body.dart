@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/feature/product/presentation/widget/details_product_and_spacy_slider.dart';
-import 'package:hungry_app/feature/product/presentation/widget/topping_item.dart';
+import 'package:hungry_app/feature/home/presentation/widget/details_product_and_spacy_slider.dart';
+import 'package:hungry_app/feature/home/presentation/widget/topping_item.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key});

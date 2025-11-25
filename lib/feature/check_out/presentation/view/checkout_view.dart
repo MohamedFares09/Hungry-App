@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hungry_app/feature/check_out/presentation/widget/checkout_view_body.dart';
 import 'package:hungry_app/feature/check_out/presentation/widget/payment_success_dialog.dart';
-import 'package:hungry_app/feature/product/presentation/widget/price_section.dart';
+import 'package:hungry_app/feature/home/presentation/widget/price_section.dart';
 import 'package:hungry_app/root.dart';
 
 class CheckoutView extends StatelessWidget {
