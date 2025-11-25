@@ -4,4 +4,6 @@ class EndPoints {
   static String register = '/register';
   static String profile = '/profile';
   static String home = '/products';
+  static String toppings = '/toppings';
+  static String sideOptions = '/side-options';
 }

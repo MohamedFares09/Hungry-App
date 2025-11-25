@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ToppingItem extends StatelessWidget {
   const ToppingItem({super.key, required this.name, required this.image});
   final String name, image;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +30,24 @@ class ToppingItem extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              child: Image.asset(image, height: 80, fit: BoxFit.cover),
+              child: CachedNetworkImage(
+                imageUrl: image,
+                height: 80,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Container(
+                  height: 80,
+                  color: Colors.grey[200],
+                  child: Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  height: 80,
+                  color: Colors.grey[200],
+                  child: Icon(Icons.error, size: 30),
+                ),
+              ),
             ),
 
             // الجزء السفلي البني
