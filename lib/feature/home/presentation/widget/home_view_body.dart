@@ -55,6 +55,7 @@ class HomeViewBody extends StatelessWidget {
                 sliver: SliverGrid(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     return CardItem(
+                      productId: state.products[index].id,
                       title: state.products[index].title,
                       desc: state.products[index].desc,
                       image: state.products[index].image,

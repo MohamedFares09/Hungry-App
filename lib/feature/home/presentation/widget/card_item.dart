@@ -5,17 +5,24 @@ import 'package:hungry_app/feature/home/presentation/product_datails_view.dart';
 class CardItem extends StatelessWidget {
   const CardItem({
     super.key,
+    required this.productId,
     required this.title,
     required this.desc,
     required this.image,
     required this.rate,
   });
+  final int productId;
   final String title, desc, image, rate;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, ProductDatailsView.routeName);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsView(productId: productId),
+          ),
+        );
       },
       child: Card(
         child: Column(
