@@ -16,7 +16,7 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
   RegisterRemoteDataSourceImpl({required this.api});
 
   @override
-  Future<UserModel> register({
+  Future<UserModel> register({ 
     required String name,
     required String email,
     required String password,

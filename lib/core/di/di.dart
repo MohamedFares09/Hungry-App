@@ -4,7 +4,7 @@ import 'package:hungry_app/core/networking/api/api_consumer.dart';
 import 'package:hungry_app/core/networking/api/dio_consumer.dart';
 import 'package:hungry_app/feature/home/data/data_sources/home_remote_data_sources.dart';
 import 'package:hungry_app/feature/home/data/repos/home_reposotory_impl.dart';
-import 'package:hungry_app/feature/home/doman/repo/home_repo.dart';
+import 'package:hungry_app/feature/home/doman/repo/product_repo.dart';
 import 'package:hungry_app/feature/home/doman/usecases/home_usecases.dart';
 import 'package:hungry_app/feature/home/presentation/cubit/product_cubit.dart';
 
