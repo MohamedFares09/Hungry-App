@@ -22,7 +22,7 @@ class CheckoutView extends StatelessWidget {
       bottomSheet: SizedBox(
         height: 120,
         child: PriceSection(
-          price: 80,
+          price: '80',
           nameButton: 'Pay Now',
           onTap: () {
             return showDialog(

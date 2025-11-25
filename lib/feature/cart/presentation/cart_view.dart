@@ -26,7 +26,7 @@ class CartView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 10.0, bottom: 10),
           child: PriceSection(
-            price: 80,
+            price: '80',
             nameButton: 'Checkout',
             onTap: () {
               Navigator.pushNamed(context, CheckoutView.routeName);
