@@ -5,7 +5,7 @@ import 'package:hungry_app/core/widgets/custom_button.dart';
 class PriceSection extends StatelessWidget {
   const PriceSection({super.key, this.nameButton, required this.price , this.onTap});
   final String? nameButton;
-  final double price;
+  final String price;
   final Function()? onTap ;
   @override
   Widget build(BuildContext context) {
