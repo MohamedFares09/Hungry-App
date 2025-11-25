@@ -18,4 +18,14 @@ class HomeReposotoryImpl implements ProductRepo {
       return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
     }
   }
+  
+  @override
+  Future<Either<Faliuer, HomeEntity>> getProductWithId(int id)async {
+    try {
+      final home = await homeRemoteDataSource.getProductWithId(id);
+      return Right(home);
+    } on ServerException catch (e) {
+      return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
+    }
+  }
 }
