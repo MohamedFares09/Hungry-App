@@ -22,8 +22,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void navigatorToNextView() {
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-
-      // Check if user is logged in
       final isLoggedIn = cacheHelper.isLoggedIn();
 
       Navigator.pushNamedAndRemoveUntil(
