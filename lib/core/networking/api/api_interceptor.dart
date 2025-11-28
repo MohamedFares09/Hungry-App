@@ -13,7 +13,7 @@ class ApiInterceptor extends Interceptor {
 
     // Add token to headers if it exists
     if (token != null && token.isNotEmpty) {
-      options.headers['token'] = token;
+      options.headers['Authorization'] = 'Bearer $token';
     }
 
     super.onRequest(options, handler);
