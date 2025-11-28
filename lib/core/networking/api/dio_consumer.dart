@@ -1,12 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:hungry_app/core/networking/api/api_consumer.dart';
+import 'package:hungry_app/core/networking/api/api_interceptor.dart';
 import 'package:hungry_app/core/networking/errors/exception.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
 
-  DioConsumer(this.dio) {
+  DioConsumer(this.dio, {required ApiInterceptor apiInterceptor}) {
     dio.options.baseUrl = 'https://sonic-zdi0.onrender.com/api';
+
+    // Add API Interceptor for token injection
+    dio.interceptors.add(apiInterceptor);
+
+    // Add Log Interceptor for debugging
     dio.interceptors.add(
       LogInterceptor(
         request: true,
