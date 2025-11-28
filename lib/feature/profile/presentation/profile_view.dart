@@ -16,12 +16,29 @@ class ProfileView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.primaryColor,
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: AppColors.primaryColor,
-          leading: Icon(Icons.arrow_back, color: Colors.white),
+          centerTitle: true,
+          title: Text(
+            'My Profile',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+          ),
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.settings, color: Colors.white),
+              icon: Icon(
+                Icons.settings_outlined,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
           ],
         ),
