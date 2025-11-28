@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileImage extends StatelessWidget {
-  const ProfileImage({
-    super.key,
-  });
+  final String? imageUrl;
+
+  const ProfileImage({super.key, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,18 @@ class ProfileImage extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
-          child: Image.asset(
-            'assets/images/profile.png',
-            fit: BoxFit.cover,
-          ),
+          child: imageUrl != null && imageUrl!.isNotEmpty
+              ? Image.network(
+                  imageUrl!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/images/profile.png',
+                      fit: BoxFit.cover,
+                    );
+                  },
+                )
+              : Image.asset('assets/images/profile.png', fit: BoxFit.cover),
         ),
       ),
     );
