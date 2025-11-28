@@ -9,12 +9,8 @@ class UserModel extends UserEntity {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    // Extract data from the nested 'data' object
-    final data = json['data'] as Map<String, dynamic>?;
-
-    if (data == null) {
-      throw Exception('Invalid response: data field is missing');
-    }
+    // Check if data is nested or at root level
+    final data = json['data'] as Map<String, dynamic>? ?? json;
 
     return UserModel(
       token: data['token'] ?? '',
