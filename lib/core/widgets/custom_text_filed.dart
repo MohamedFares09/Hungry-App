@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 
@@ -12,6 +10,7 @@ class CustomTextFiled extends StatefulWidget {
     this.fillColor,
     this.labe,
     this.hintTextColor,
+    this.readOnly = false,
   });
   final String hintText;
   final TextEditingController controller;
@@ -19,6 +18,7 @@ class CustomTextFiled extends StatefulWidget {
   final Color? fillColor;
   final Widget? labe;
   final TextStyle? hintTextColor;
+  final bool readOnly;
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
@@ -36,6 +36,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
+        if (widget.readOnly) return null;
         if (value == null || value.isEmpty) {
           return 'Please enter ${widget.hintText}';
         }
@@ -43,12 +44,13 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       },
       controller: widget.controller,
       obscureText: _obscureText,
+      readOnly: widget.readOnly,
       decoration: InputDecoration(
         fillColor: widget.fillColor ?? Colors.white,
         filled: true,
         label: widget.labe,
         hintText: widget.hintText,
-        hintStyle:widget.hintTextColor?? TextStyle(color: Colors.black),
+        hintStyle: widget.hintTextColor ?? TextStyle(color: Colors.black),
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(

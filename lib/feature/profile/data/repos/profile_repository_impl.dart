@@ -19,4 +19,22 @@ class ProfileRepositoryImpl implements ProfileRepo {
       return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
     }
   }
+
+  @override
+  Future<Either<Faliuer, UserEntity>> updateUserProfile({
+    required String name,
+    required String email,
+    String? imagePath,
+  }) async {
+    try {
+      final user = await remoteDataSource.updateUserProfile(
+        name: name,
+        email: email,
+        imagePath: imagePath,
+      );
+      return Right(user);
+    } on ServerException catch (e) {
+      return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
+    }
+  }
 }

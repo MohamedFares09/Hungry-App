@@ -15,6 +15,7 @@ import 'package:hungry_app/feature/profile/data/datasources/profile_remote_data_
 import 'package:hungry_app/feature/profile/data/repos/profile_repository_impl.dart';
 import 'package:hungry_app/feature/profile/domain/repo/profile_repo.dart';
 import 'package:hungry_app/feature/profile/domain/usecases/get_user_profile_usecase.dart';
+import 'package:hungry_app/feature/profile/domain/usecases/update_user_profile_usecase.dart';
 import 'package:hungry_app/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -92,8 +93,15 @@ Future<void> setupServiceLocator() async {
     () => GetUserProfileUseCase(profileRepo: getIt<ProfileRepo>()),
   );
 
+  getIt.registerLazySingleton<UpdateUserProfileUseCase>(
+    () => UpdateUserProfileUseCase(profileRepo: getIt<ProfileRepo>()),
+  );
+
   // Profile Feature - Cubit (Factory - new instance each time)
   getIt.registerFactory<ProfileCubit>(
-    () => ProfileCubit(getIt<GetUserProfileUseCase>()),
+    () => ProfileCubit(
+      getIt<GetUserProfileUseCase>(),
+      getIt<UpdateUserProfileUseCase>(),
+    ),
   );
 }

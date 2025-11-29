@@ -17,3 +17,17 @@ class ProfileError extends ProfileState {
 
   ProfileError({required this.message});
 }
+
+class ProfileUpdating extends ProfileState {}
+
+class ProfileUpdateSuccess extends ProfileState {
+  final UserEntity user;
+
+  ProfileUpdateSuccess({required this.user});
+}
+
+class ProfileUpdateError extends ProfileState {
+  final String message;
+
+  ProfileUpdateError({required this.message});
+}

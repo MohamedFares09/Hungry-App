@@ -8,7 +8,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  // Initialize GetIt Service Locator (includes CacheHelper setup)
   await setupServiceLocator();
 
   runApp(const HungryApp());

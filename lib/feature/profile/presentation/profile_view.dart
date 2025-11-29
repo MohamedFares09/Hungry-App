@@ -28,7 +28,7 @@ class ProfileView extends StatelessWidget {
             ),
           ),
           leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {},
             icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
           ),
           actions: [
