@@ -4,6 +4,7 @@ import 'package:hungry_app/feature/auth/login/data/model/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<UserModel> login({required String email, required String password});
+  Future<void> logout();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -21,5 +22,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       data: {"email": email, "password": password},
     );
     return UserModel.fromJson(response);
+  }
+
+  @override
+  Future<void> logout() async {
+    await api.post(EndPoints.logout);
   }
 }
