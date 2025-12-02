@@ -47,6 +47,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       readOnly: widget.readOnly,
       decoration: InputDecoration(
         fillColor: widget.fillColor ?? Colors.white,
+        
         filled: true,
         label: widget.labe,
         hintText: widget.hintText,

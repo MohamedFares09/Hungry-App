@@ -172,7 +172,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   icon: Icons.logout,
                   title: 'Log Out',
                   color: Colors.red.shade400,
-                  onTap: () {},
+                  onTap: () {
+                    
+                  },
                 ),
               ],
               SizedBox(height: 20),
