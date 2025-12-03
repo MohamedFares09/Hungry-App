@@ -9,6 +9,12 @@ import 'package:hungry_app/feature/auth/login/data/repos/auth_repository_impl.da
 import 'package:hungry_app/feature/auth/login/domain/repo/user_repo.dart';
 import 'package:hungry_app/feature/auth/login/domain/usecases/logout_usecase.dart';
 import 'package:hungry_app/feature/auth/login/presentation/cubit/logout_cubit.dart';
+import 'package:hungry_app/feature/cart/data/datasources/cart_remote_data_source.dart';
+import 'package:hungry_app/feature/cart/data/repos/cart_repository_impl.dart';
+import 'package:hungry_app/feature/cart/domain/repos/cart_repo.dart';
+import 'package:hungry_app/feature/cart/domain/usecases/add_to_cart_usecase.dart';
+import 'package:hungry_app/feature/cart/domain/usecases/get_cart_usecase.dart';
+import 'package:hungry_app/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:hungry_app/feature/home/data/data_sources/home_remote_data_sources.dart';
 import 'package:hungry_app/feature/home/data/repos/home_reposotory_impl.dart';
 import 'package:hungry_app/feature/home/doman/repo/product_repo.dart';
@@ -69,15 +75,29 @@ Future<void> setupServiceLocator() async {
     () => ProductWithIdUseCases(productRepo: getIt<ProductRepo>()),
   );
 
-  // Home Feature - Cubit (Factory - new instance each time)
-  getIt.registerFactory<ProductCubit>(
-    () => ProductCubit(getIt<HomeUsecases>()),
+  // Cart Feature - Data Sources
+  getIt.registerLazySingleton<CartRemoteDataSource>(
+    () => CartRemoteDataSourceImpl(api: getIt<ApiConsumer>()),
   );
 
-  getIt.registerFactory<ProductDetailsCubit>(
-    () => ProductDetailsCubit(
-      getIt<ProductWithIdUseCases>(),
-      getIt<HomeRemoteDataSource>(),
+  // Cart Feature - Repositories
+  getIt.registerLazySingleton<CartRepo>(
+    () => CartRepositoryImpl(remoteDataSource: getIt<CartRemoteDataSource>()),
+  );
+
+  // Cart Feature - Use Cases
+  getIt.registerLazySingleton<AddToCartUseCase>(
+    () => AddToCartUseCase(cartRepo: getIt<CartRepo>()),
+  );
+  getIt.registerLazySingleton<GetCartUseCase>(
+    () => GetCartUseCase(cartRepo: getIt<CartRepo>()),
+  );
+
+  // Cart Feature - Cubit (Factory - new instance each time)
+  getIt.registerFactory<CartCubit>(
+    () => CartCubit(
+      addToCartUseCase: getIt<AddToCartUseCase>(),
+      getCartUseCase: getIt<GetCartUseCase>(),
     ),
   );
 
@@ -102,6 +122,18 @@ Future<void> setupServiceLocator() async {
   // Auth Feature - Cubit (Factory - new instance each time)
   getIt.registerFactory<LogoutCubit>(
     () => LogoutCubit(logoutUseCase: getIt<LogoutUseCase>()),
+  );
+
+  // Home Feature - Cubit (Factory - new instance each time)
+  getIt.registerFactory<ProductCubit>(
+    () => ProductCubit(getIt<HomeUsecases>()),
+  );
+
+  getIt.registerFactory<ProductDetailsCubit>(
+    () => ProductDetailsCubit(
+      getIt<ProductWithIdUseCases>(),
+      getIt<HomeRemoteDataSource>(),
+    ),
   );
 
   // Profile Feature - Data Sources

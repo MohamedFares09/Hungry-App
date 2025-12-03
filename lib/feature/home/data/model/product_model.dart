@@ -2,8 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:hungry_app/feature/home/doman/entities/home_entity.dart';
 
 class ProductModel extends HomeEntity {
- 
-
   ProductModel({
     required super.id,
     required super.title,

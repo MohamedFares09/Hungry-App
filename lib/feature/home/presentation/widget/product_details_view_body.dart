@@ -107,9 +107,19 @@ class ProductDetailsViewBody extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: state.toppings.map((topping) {
+                      final isSelected = state.selectedToppings.contains(
+                        topping.id,
+                      );
                       return ToppingItem(
+                        id: topping.id,
                         name: topping.name,
                         image: topping.image,
+                        isSelected: isSelected,
+                        onTap: () {
+                          context.read<ProductDetailsCubit>().toggleTopping(
+                            topping.id,
+                          );
+                        },
                       );
                     }).toList(),
                   ),
@@ -129,9 +139,19 @@ class ProductDetailsViewBody extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: state.sideOptions.map((option) {
+                      final isSelected = state.selectedSideOptions.contains(
+                        option.id,
+                      );
                       return ToppingItem(
+                        id: option.id,
                         name: option.name,
                         image: option.image,
+                        isSelected: isSelected,
+                        onTap: () {
+                          context.read<ProductDetailsCubit>().toggleSideOption(
+                            option.id,
+                          );
+                        },
                       );
                     }).toList(),
                   ),

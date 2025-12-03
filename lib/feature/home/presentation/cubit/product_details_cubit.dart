@@ -56,4 +56,50 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       }
     }
   }
+
+  void toggleTopping(int toppingId) {
+    if (state is ProductDetailsSuccess) {
+      final currentState = state as ProductDetailsSuccess;
+      final selectedToppings = List<int>.from(currentState.selectedToppings);
+
+      if (selectedToppings.contains(toppingId)) {
+        selectedToppings.remove(toppingId);
+      } else {
+        selectedToppings.add(toppingId);
+      }
+
+      emit(currentState.copyWith(selectedToppings: selectedToppings));
+    }
+  }
+
+  void toggleSideOption(int sideOptionId) {
+    if (state is ProductDetailsSuccess) {
+      final currentState = state as ProductDetailsSuccess;
+      final selectedSideOptions = List<int>.from(
+        currentState.selectedSideOptions,
+      );
+
+      if (selectedSideOptions.contains(sideOptionId)) {
+        selectedSideOptions.remove(sideOptionId);
+      } else {
+        selectedSideOptions.add(sideOptionId);
+      }
+
+      emit(currentState.copyWith(selectedSideOptions: selectedSideOptions));
+    }
+  }
+
+  void updateSpicyLevel(double level) {
+    if (state is ProductDetailsSuccess) {
+      final currentState = state as ProductDetailsSuccess;
+      emit(currentState.copyWith(spicyLevel: level));
+    }
+  }
+
+  void updateQuantity(int newQuantity) {
+    if (state is ProductDetailsSuccess && newQuantity > 0) {
+      final currentState = state as ProductDetailsSuccess;
+      emit(currentState.copyWith(quantity: newQuantity));
+    }
+  }
 }

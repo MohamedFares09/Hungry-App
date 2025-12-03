@@ -9,4 +9,5 @@ class EndPoints {
   static String toppings = '/toppings';
   static String sideOptions = '/side-options';
   static String addCart = '/cart/add';
+  static String getCart = '/cart';
 }
