@@ -10,7 +10,7 @@ class ProfileActionButton extends StatelessWidget {
     super.key,
     required this.icon,
     required this.title,
-    required this.onTap,
+    this.onTap,
     this.color,
   });
 
