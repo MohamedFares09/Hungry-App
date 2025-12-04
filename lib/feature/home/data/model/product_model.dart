@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:hungry_app/feature/home/doman/entities/home_entity.dart';
 
 class ProductModel extends HomeEntity {
@@ -14,11 +13,23 @@ class ProductModel extends HomeEntity {
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       id: json['id'] ?? 0,
-      price: json['price'] ?? 0,
+      price: json['price']?.toString() ?? '0',
       title: json['name'] ?? '',
       desc: json['description'] ?? '',
-      image: json['image'] ?? '',
-      rate: cast(json['rating']) ?? '0.0',
+      image: _getFullImageUrl(json['image'] ?? ''),
+      rate: json['rating']?.toString() ?? '0.0',
     );
+  }
+
+  static String _getFullImageUrl(String imageUrl) {
+    if (imageUrl.isEmpty) return '';
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    // إضافة base URL إذا كان المسار نسبي
+    const baseUrl = 'https://sonic-zdi0.onrender.com';
+    return imageUrl.startsWith('/')
+        ? '$baseUrl$imageUrl'
+        : '$baseUrl/$imageUrl';
   }
 }

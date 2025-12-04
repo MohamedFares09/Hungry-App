@@ -59,7 +59,7 @@ class CartViewBody extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${state.cartModel.totalPrice} EGP',
+                          '${state.cartModel.totalPrice.toStringAsFixed(2)} EGP',
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

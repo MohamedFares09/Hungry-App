@@ -56,7 +56,7 @@ class CartItemWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${item.product.price} EGP',
+                  '${item.totalItemPrice.toStringAsFixed(2)} EGP',
                   style: const TextStyle(
                     fontSize: 14,
                     color: AppColors.primaryColor,
