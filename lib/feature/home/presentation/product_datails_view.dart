@@ -66,6 +66,7 @@ class ProductDetailsView extends StatelessWidget {
                   if (state is ProductDetailsSuccess) {
                     return PriceSection(
                       price: state.product.price,
+                      showLoadingFromCart: true,
                       onTap: () {
                         final cartItem = CartItemModel(
                           productId: state.product.id,
