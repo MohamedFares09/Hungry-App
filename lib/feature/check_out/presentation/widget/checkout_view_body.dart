@@ -4,7 +4,8 @@ import 'package:hungry_app/feature/check_out/presentation/widget/order_summary_r
 import 'package:hungry_app/feature/check_out/presentation/widget/select_payment.dart';
 
 class CheckoutViewBody extends StatefulWidget {
-  const CheckoutViewBody({super.key});
+  const CheckoutViewBody({super.key, required this.orderTotal});
+  final double orderTotal;
 
   @override
   State<CheckoutViewBody> createState() => _CheckoutViewBodyState();
@@ -13,23 +14,32 @@ class CheckoutViewBody extends StatefulWidget {
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   String selectedPayment = 'cash';
   bool isChecked = false;
+
+  // Constants for fees
+  static const double taxRate = 0.14; // 14% tax
+  static const double deliveryFee = 10.0; // Fixed delivery fee
+
   @override
   Widget build(BuildContext context) {
+    // Calculate fees
+    final taxes = widget.orderTotal * taxRate;
+    final total = widget.orderTotal + taxes + deliveryFee;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Order Summary', style: AppStyles.semibold20),
-          SizedBox(height: 10),
-          OrderSummaryRow(name: "Order", price: 16.48),
-          OrderSummaryRow(name: "Taxes", price: 0.3),
-          OrderSummaryRow(name: "Delivery fees", price: 1.5),
-          Divider(),
-          SizedBox(height: 24.5),
+          const SizedBox(height: 10),
+          OrderSummaryRow(name: "Order", price: widget.orderTotal),
+          OrderSummaryRow(name: "Taxes (14%)", price: taxes),
+          OrderSummaryRow(name: "Delivery fees", price: deliveryFee),
+          const Divider(),
+          const SizedBox(height: 24.5),
           OrderSummaryRow(
             name: "Total",
-            price: 18.73,
+            price: total,
             style: AppStyles.regular18.copyWith(fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 15),
@@ -43,9 +53,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               ],
             ),
           ),
-          SizedBox(height: 60),
-          Text('Payment Method', style: AppStyles.semibold20),
-          SizedBox(height: 20),
+          const SizedBox(height: 60),
+          const Text('Payment Method', style: AppStyles.semibold20),
+          const SizedBox(height: 20),
           SelectPayment(
             onTap: () => setState(() => selectedPayment = 'cash'),
             title: 'Cash on Delivery',
@@ -87,7 +97,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   });
                 },
               ),
-              SizedBox(width: 3),
+              const SizedBox(width: 3),
               Text(
                 'Save card details for future payments',
                 style: AppStyles.regular16,
