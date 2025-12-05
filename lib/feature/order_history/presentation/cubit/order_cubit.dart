@@ -4,10 +4,14 @@ import 'package:hungry_app/feature/order_history/data/models/create_order_reques
 import 'package:hungry_app/feature/order_history/domain/usecases/create_order_usecase.dart';
 import 'package:hungry_app/feature/order_history/presentation/cubit/order_state.dart';
 
+import 'package:hungry_app/feature/order_history/domain/usecases/get_orders_usecase.dart';
+
 class OrderCubit extends Cubit<OrderState> {
   final CreateOrderUseCase createOrderUseCase;
+  final GetOrdersUseCase getOrdersUseCase;
 
-  OrderCubit({required this.createOrderUseCase}) : super(OrderInitial());
+  OrderCubit({required this.createOrderUseCase, required this.getOrdersUseCase})
+    : super(OrderInitial());
 
   Future<void> createOrder(List<CartItemResponseModel> cartItems) async {
     if (isClosed) return;
@@ -39,6 +43,29 @@ class OrderCubit extends Cubit<OrderState> {
       (_) {
         if (!isClosed) {
           emit(OrderSuccess());
+        }
+      },
+    );
+  }
+
+  Future<void> getOrders() async {
+    if (isClosed) return;
+    emit(GetOrdersLoading());
+
+    final result = await getOrdersUseCase();
+
+    if (isClosed) return;
+
+    result.fold(
+      (failure) {
+        if (!isClosed) {
+          emit(GetOrdersError(message: failure.message));
+        }
+      },
+      (orders) {
+        if (!isClosed) {
+          print('Orders count: ${orders.length}');
+          emit(GetOrdersSuccess(orders: orders));
         }
       },
     );

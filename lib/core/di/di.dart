@@ -32,6 +32,7 @@ import 'package:hungry_app/feature/order_history/data/datasources/order_remote_d
 import 'package:hungry_app/feature/order_history/data/repos/order_repository_impl.dart';
 import 'package:hungry_app/feature/order_history/domain/repos/order_repo.dart';
 import 'package:hungry_app/feature/order_history/domain/usecases/create_order_usecase.dart';
+import 'package:hungry_app/feature/order_history/domain/usecases/get_orders_usecase.dart';
 import 'package:hungry_app/feature/order_history/presentation/cubit/order_cubit.dart';
 import 'package:hungry_app/feature/profile/presentation/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -125,10 +126,16 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<CreateOrderUseCase>(
     () => CreateOrderUseCase(orderRepo: getIt<OrderRepo>()),
   );
+  getIt.registerLazySingleton<GetOrdersUseCase>(
+    () => GetOrdersUseCase(orderRepo: getIt<OrderRepo>()),
+  );
 
   // Order Feature - Cubit
   getIt.registerFactory<OrderCubit>(
-    () => OrderCubit(createOrderUseCase: getIt<CreateOrderUseCase>()),
+    () => OrderCubit(
+      createOrderUseCase: getIt<CreateOrderUseCase>(),
+      getOrdersUseCase: getIt<GetOrdersUseCase>(),
+    ),
   );
 
   // Auth Feature - Data Sources

@@ -6,6 +6,7 @@ import 'package:hungry_app/feature/cart/presentation/cart_view.dart';
 import 'package:hungry_app/feature/check_out/presentation/view/checkout_view.dart';
 import 'package:hungry_app/feature/home/presentation/home_view.dart';
 import 'package:hungry_app/feature/home/presentation/product_datails_view.dart';
+import 'package:hungry_app/feature/order_history/presentation/view/order_history_view.dart';
 import 'package:hungry_app/feature/splash/presentation/splash_view.dart';
 import 'package:hungry_app/root.dart';
 
@@ -35,6 +36,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case CartView.routeName:
       return MaterialPageRoute(builder: (context) => const CartView());
+    case OrderHistoryView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderHistoryView());
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(

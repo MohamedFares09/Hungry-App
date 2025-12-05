@@ -5,6 +5,8 @@ import 'package:hungry_app/feature/order_history/data/datasources/order_remote_d
 import 'package:hungry_app/feature/order_history/data/models/create_order_request.dart';
 import 'package:hungry_app/feature/order_history/domain/repos/order_repo.dart';
 
+import 'package:hungry_app/feature/order_history/domain/entities/order_entity.dart';
+
 class OrderRepositoryImpl implements OrderRepo {
   final OrderRemoteDataSource remoteDataSource;
 
@@ -15,6 +17,16 @@ class OrderRepositoryImpl implements OrderRepo {
     try {
       await remoteDataSource.createOrder(request);
       return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
+    }
+  }
+
+  @override
+  Future<Either<Faliuer, List<OrderEntity>>> getOrders() async {
+    try {
+      final orders = await remoteDataSource.getOrders();
+      return Right(orders);
     } on ServerException catch (e) {
       return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
     }
