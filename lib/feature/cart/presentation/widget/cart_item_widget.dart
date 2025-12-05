@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/feature/cart/data/models/cart_response_model.dart';
+import 'package:hungry_app/feature/cart/presentation/cubit/cart_cubit.dart';
 
 class CartItemWidget extends StatelessWidget {
   final CartItemResponseModel item;
@@ -102,6 +104,38 @@ class CartItemWidget extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          // Delete Button
+          IconButton(
+            onPressed: () {
+              _showDeleteConfirmation(context);
+            },
+            icon: const Icon(Icons.delete_outline, color: Colors.red, size: 24),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Remove Item'),
+        content: const Text(
+          'Are you sure you want to remove this item from cart?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              context.read<CartCubit>().removeFromCart(item.id);
+            },
+            child: const Text('Remove', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
