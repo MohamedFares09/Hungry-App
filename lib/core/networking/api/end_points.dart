@@ -11,4 +11,7 @@ class EndPoints {
   static String addCart = '/cart/add';
   static String getCart = '/cart';
   static String removeCart = '/cart/remove/';
+  static String addOrRemoveFavorite = '/toggle-favorite';
+  static String getUserFavorite = '/favorites';
+  static String saveOrder = '/orders';
 }
