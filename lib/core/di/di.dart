@@ -14,6 +14,7 @@ import 'package:hungry_app/feature/cart/data/repos/cart_repository_impl.dart';
 import 'package:hungry_app/feature/cart/domain/repos/cart_repo.dart';
 import 'package:hungry_app/feature/cart/domain/usecases/add_to_cart_usecase.dart';
 import 'package:hungry_app/feature/cart/domain/usecases/get_cart_usecase.dart';
+import 'package:hungry_app/feature/cart/domain/usecases/remove_from_cart_usecase.dart';
 import 'package:hungry_app/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:hungry_app/feature/home/data/data_sources/home_remote_data_sources.dart';
 import 'package:hungry_app/feature/home/data/repos/home_reposotory_impl.dart';
@@ -92,12 +93,16 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<GetCartUseCase>(
     () => GetCartUseCase(cartRepo: getIt<CartRepo>()),
   );
+  getIt.registerLazySingleton<RemoveFromCartUseCase>(
+    () => RemoveFromCartUseCase(cartRepo: getIt<CartRepo>()),
+  );
 
   // Cart Feature - Cubit (Factory - new instance each time)
   getIt.registerFactory<CartCubit>(
     () => CartCubit(
       addToCartUseCase: getIt<AddToCartUseCase>(),
       getCartUseCase: getIt<GetCartUseCase>(),
+      removeFromCartUseCase: getIt<RemoveFromCartUseCase>(),
     ),
   );
 
