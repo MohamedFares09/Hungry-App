@@ -6,4 +6,5 @@ import 'package:hungry_app/feature/cart/data/models/cart_response_model.dart';
 abstract class CartRepo {
   Future<Either<Faliuer, void>> addToCart(AddToCartRequest request);
   Future<Either<Faliuer, CartResponseModel>> getCart();
+  Future<Either<Faliuer, void>> removeFromCart(int itemId);
 }

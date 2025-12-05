@@ -6,6 +6,7 @@ import 'package:hungry_app/feature/cart/data/models/cart_response_model.dart';
 abstract class CartRemoteDataSource {
   Future<void> addToCart(AddToCartRequest request);
   Future<CartResponseModel> getCart();
+  Future<void> removeFromCart(int itemId);
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -24,5 +25,10 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
     print('=== Cart API Response ===');
     print(response['data']);
     return CartResponseModel.fromJson(response['data']);
+  }
+
+  @override
+  Future<void> removeFromCart(int itemId) async {
+    await api.delete('${EndPoints.removeCart}$itemId');
   }
 }

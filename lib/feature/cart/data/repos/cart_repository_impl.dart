@@ -30,4 +30,14 @@ class CartRepositoryImpl implements CartRepo {
       return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
     }
   }
+
+  @override
+  Future<Either<Faliuer, void>> removeFromCart(int itemId) async {
+    try {
+      await remoteDataSource.removeFromCart(itemId);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(Faliuer(message: e.errorModel.message ?? "Unknown Error"));
+    }
+  }
 }
