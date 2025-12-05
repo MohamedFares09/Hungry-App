@@ -11,8 +11,8 @@ class ProfileSectionTitle extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: TextStyle(
-          color: Colors.white,
+        style: const TextStyle(
+          color: Colors.black,
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),

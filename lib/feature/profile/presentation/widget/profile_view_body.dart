@@ -144,11 +144,8 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           if (state is ProfileLoading) {
-            return Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
-                strokeWidth: 3,
-              ),
+            return const Center(
+              child: CircularProgressIndicator(strokeWidth: 3),
             );
           }
 

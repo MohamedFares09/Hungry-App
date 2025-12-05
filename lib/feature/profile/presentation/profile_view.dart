@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hungry_app/core/constants/app_colors.dart';
+
 import 'package:hungry_app/core/di/di.dart';
 import 'package:hungry_app/feature/auth/login/presentation/cubit/logout_cubit.dart';
 import 'package:hungry_app/feature/profile/presentation/cubit/profile_cubit.dart';
@@ -20,29 +20,35 @@ class ProfileView extends StatelessWidget {
         BlocProvider(create: (context) => getIt<LogoutCubit>()),
       ],
       child: Scaffold(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: Colors.white,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'My Profile',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
           leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 20,
+            ),
           ),
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.settings_outlined,
-                color: Colors.white,
+                color: Colors.black,
                 size: 24,
               ),
             ),

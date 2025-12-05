@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String name;
@@ -12,14 +12,14 @@ class ProfileHeader extends StatelessWidget {
       children: [
         Text(
           name,
-          style: TextStyle(
-            color: Colors.white,
+          style: const TextStyle(
+            color: Colors.black,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8),
-        Text(email, style: TextStyle(color: Colors.white70, fontSize: 14)),
+        const SizedBox(height: 8),
+        Text(email, style: const TextStyle(color: Colors.grey, fontSize: 14)),
       ],
     );
   }

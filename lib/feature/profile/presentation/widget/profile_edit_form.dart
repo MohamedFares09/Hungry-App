@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/core/constants/app_colors.dart';
+
 import 'package:hungry_app/core/widgets/custom_text_filed.dart';
 
 class ProfileEditForm extends StatelessWidget {
@@ -25,25 +25,15 @@ class ProfileEditForm extends StatelessWidget {
         CustomTextFiled(
           hintText: 'Full Name',
           controller: nameController,
-          fillColor: AppColors.primaryColor,
           readOnly: false,
-          labe: Text(
-            'Full Name',
-            style: TextStyle(color: Colors.white70, fontSize: 14),
-          ),
-          hintTextColor: TextStyle(color: Colors.white),
+          labe: const Text('Full Name'),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         CustomTextFiled(
           hintText: 'Email Address',
           controller: emailController,
-          fillColor: AppColors.primaryColor,
           readOnly: false,
-          labe: Text(
-            'Email Address',
-            style: TextStyle(color: Colors.white70, fontSize: 14),
-          ),
-          hintTextColor: TextStyle(color: Colors.white),
+          labe: const Text('Email Address'),
         ),
         SizedBox(height: 30),
         Row(

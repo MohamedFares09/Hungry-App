@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hungry_app/core/constants/app_colors.dart';
 
 class CustomTextFiled extends StatefulWidget {
   const CustomTextFiled({
@@ -11,6 +10,7 @@ class CustomTextFiled extends StatefulWidget {
     this.labe,
     this.hintTextColor,
     this.readOnly = false,
+    this.textColor,
   });
   final String hintText;
   final TextEditingController controller;
@@ -19,6 +19,7 @@ class CustomTextFiled extends StatefulWidget {
   final Widget? labe;
   final TextStyle? hintTextColor;
   final bool readOnly;
+  final Color? textColor;
   @override
   State<CustomTextFiled> createState() => _CustomTextFiledState();
 }
@@ -34,7 +35,11 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return TextFormField(
+      style: TextStyle(
+        color: widget.textColor ?? theme.textTheme.bodyLarge?.color,
+      ),
       validator: (value) {
         if (widget.readOnly) return null;
         if (value == null || value.isEmpty) {
@@ -46,17 +51,16 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       obscureText: _obscureText,
       readOnly: widget.readOnly,
       decoration: InputDecoration(
-        fillColor: widget.fillColor ?? Colors.white,
-        
+        fillColor: widget.fillColor ?? theme.inputDecorationTheme.fillColor,
         filled: true,
         label: widget.labe,
         hintText: widget.hintText,
-        hintStyle: widget.hintTextColor ?? TextStyle(color: Colors.black),
+        hintStyle: widget.hintTextColor ?? theme.inputDecorationTheme.hintStyle,
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.primaryColor,
+                  color: theme.primaryColor,
                 ),
                 onPressed: () {
                   setState(() {
@@ -65,15 +69,6 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                 },
               )
             : null,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white, width: 2),
-        ),
       ),
     );
   }
