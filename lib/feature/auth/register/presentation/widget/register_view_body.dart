@@ -8,7 +8,6 @@ import 'package:hungry_app/feature/auth/register/presentation/cubit/register_cub
 import 'package:hungry_app/feature/auth/register/presentation/cubit/register_state.dart';
 import 'package:hungry_app/feature/auth/register/presentation/widget/do_you_have_an_account.dart';
 
-
 class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody({super.key});
 
@@ -24,9 +23,12 @@ class RegisterViewBody extends StatelessWidget {
           Navigator.pushNamed(context, LoginView.routeName);
         }
         if (state is RegisterError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.error)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Email Already Exist'),
+              backgroundColor: AppColors.error,
+            ),
+          );
         }
       },
       builder: (context, state) {

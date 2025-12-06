@@ -22,12 +22,19 @@ class LoginViewBody extends StatelessWidget {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(const SnackBar(content: Text("Login Successfully")));
-          Navigator.pushNamedAndRemoveUntil(context, Root.routeName, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            Root.routeName,
+            (route) => false,
+          );
         }
         if (state is LoginError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.error)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error),
+              backgroundColor: AppColors.error,
+            ),
+          );
         }
       },
       builder: (context, state) {
