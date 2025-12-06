@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hungry_app/core/constants/app_colors.dart';
+import 'package:hungry_app/core/constants/app_styles.dart';
 import 'package:hungry_app/feature/order_history/presentation/cubit/order_cubit.dart';
 import 'package:hungry_app/feature/order_history/presentation/cubit/order_state.dart';
 import 'package:hungry_app/feature/order_history/presentation/widget/order_item_widget.dart';
@@ -20,9 +22,25 @@ class OrderHistoryViewBody extends StatelessWidget {
                 await context.read<OrderCubit>().getOrders();
               },
               child: ListView(
-                children: const [
-                  SizedBox(height: 200),
-                  Center(child: Text('No orders found')),
+                children: [
+                  const SizedBox(height: 200),
+                  Center(
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 50,
+                          color: AppColors.primaryColor,
+                        ),
+                        Text(
+                          'No orders found',
+                          style: AppStyles.medaim20.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             );
